@@ -1,51 +1,50 @@
-const queryString = window.location.search
-const urlParams = new URLSearchParams(queryString)
-
-const firstName = urlParams.get('firstName')
-const lastName = urlParams.get('lastName')
-const phoneNumber = urlParams.get('phoneNumber')
-const email = urlParams.get('email')
-const ref = urlParams.get('ref')
-
-document.getElementById('firstName').value = firstName || ''
-document.getElementById('lastName').value = lastName || ''
-document.getElementById('phoneNumber').value = phoneNumber || ''
-document.getElementById('email').value = email || ''
-document.getElementById('ref').value = ref || ''
-
-const emailInput = document.getElementById('email')
-const emailRegex = /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*$/
-if (email && !email.match(emailRegex)) {
-    showErrorMessage(emailInput, 'Please enter a valid email address.')
-    emailInput.value = ''
+h1 {
+  padding: 1px 20px;
 }
 
-const phoneNumberInput = document.getElementById('phoneNumber')
-const phoneRegex = /^\d{10}$/
-if (phoneNumber && !phoneNumber.match(phoneRegex)) {
-    showErrorMessage(phoneNumberInput, 'Please enter a valid 10-digit phone number.')
-    phoneNumberInput.value = '' // Clear the invalid phone number value
+body {
+  color: white;
+  font-family: 'Trebuchet MS', sans-serif;
+  background-color: #222;
 }
 
-function showErrorMessage(inputElement, message) {
-    const errorElementId = inputElement.id + '-error'
-    let errorElement = document.getElementById(errorElementId)
-
-    if (!errorElement) {
-        errorElement = document.createElement('div')
-        errorElement.id = errorElementId
-        errorElement.classList.add('error-message')
-        inputElement.parentNode.appendChild(errorElement)
-    }
-
-    errorElement.textContent = message
+.container {
+  color: cyan;
+  max-width: 500px;
+  margin: 20px;
+  background-color: #303440;
+  border-radius: 4px;
+  padding: 20px;
 }
 
-function clearErrorMessage(inputElement) {
-    const errorElementId = inputElement.id + '-error'
-    const errorElement = document.getElementById(errorElementId)
+.form-group {
+  margin-bottom: 20px;
+}
 
-    if (errorElement) {
-        errorElement.remove()
-    }
+.form-group label {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #fff;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #000;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+.form-group input[type="submit"] {
+  font-family: 'Trebuchet MS', sans-serif;
+  font-size: 20px;
+  background-color: cyan;
+  color: black;
+  cursor: pointer;
+  transition: 0.35s linear;
+}
+
+.form-group input[type="submit"]:hover {
+  background-color: greenyellow;
 }
